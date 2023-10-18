@@ -9,46 +9,18 @@ document.getElementById("nuevoSemestreForm").addEventListener("submit", function
   
     // Crea un objeto con los datos del formulario
     var semestre = { nombre: nombre, descripcion: descripcion };
-  
-    // Agrega el objeto a una lista en JavaScript
+ 
     miLista.push(semestre);
   
     // Limpia el formulario
     document.getElementById("nuevoSemestreForm").reset();
-
+    
+    // Oculta el modal
     $('#exampleModal').modal('hide')
 
-    var contenedorHTML = document.getElementById("semestres");
-    contenedorHTML.innerHTML = '';
-
-    // Recorre el vector y genera HTML para cada objeto
-    miLista.forEach(function (objeto,index) {
-        var div = document.createElement("div");
-        div.className = "col-sm-6 col-md-4 col-lg-4 my-3"; // Asigna las clases Bootstrap
-        div.innerHTML = `
-          <div class="card">
-              <div class="card-body">
-                  <h5 class="card-title">${objeto.nombre}</h5>
-                  <p class="card-text">${objeto.descripcion}</p>
-                  <a href="#" class="btn btn-primary" id="eliminarBtn${index}">Eliminar</a>
-              </div>
-          </div>
-        `;
-        contenedorHTML.appendChild(div);
-         // Agrega un evento al botón para eliminar el elemento
-        document.getElementById(`eliminarBtn${index}`).addEventListener('click', function () {
-            eliminarElemento(index);
-        });
-    });
-});
-
-function eliminarElemento(index) {
-    // Elimina el elemento correspondiente de miLista
-    miLista.splice(index, 1);
-
-    // Actualiza la vista
+    //Llamamos a actualizar a la vista
     actualizarVista();
-}
+});
 
 function actualizarVista() {
     var contenedorHTML = document.getElementById("semestres");
@@ -64,7 +36,10 @@ function actualizarVista() {
                 <div class="card-body">
                     <h5 class="card-title">${objeto.nombre}</h5>
                     <p class="card-text">${objeto.descripcion}</p>
-                    <a href="#" class="btn btn-primary" id="eliminarBtn${index}">Eliminar</a>
+                    <div class="d-flex justify-content-end">
+                        <a href="#" class="btn btn-primary btn-sm me-2" id="detalleBtn${index}">Detalle</a>
+                        <a href="#" class="btn btn-danger btn-sm" id="eliminarBtn${index}">Eliminar</a>
+                    </div>
                 </div>
             </div>
         `;
@@ -74,5 +49,39 @@ function actualizarVista() {
         document.getElementById(`eliminarBtn${index}`).addEventListener('click', function () {
             eliminarElemento(index);
         });
+        // Agrega un evento al botón para ver el detalle del elemento
+        document.getElementById(`detalleBtn${index}`).addEventListener('click', function () {
+            console.log("Detalle boton: " + index);
+        });
+    });
+}
+
+function eliminarElemento(index) {
+
+    var alertDiv = document.createElement("div");
+    alertDiv.className = "alert alert-warning alert-dismissible fade show";
+    alertDiv.innerHTML = `
+        <strong>Confirmación:</strong> ¿Estás seguro de que deseas eliminar el semestre?
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        <div class="mt-3">
+            <button type="button" class="btn btn-danger me-2" id="btnCancelar">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="btnAceptar">Aceptar</button>
+        </div>
+    `;
+    // Agrega el elemento div al cuerpo del documento
+    document.body.appendChild(alertDiv);
+
+    // Agrega un evento al botón de cancelar
+    document.getElementById("btnCancelar").addEventListener("click", function () {
+        document.body.removeChild(alertDiv); // Cierra la alerta
+    });
+
+    // Agrega un evento al botón de aceptar
+    document.getElementById("btnAceptar").addEventListener("click", function () {
+        document.body.removeChild(alertDiv); // Cierra la alerta
+        // Elimina el elemento correspondiente de miLista
+        miLista.splice(index, 1);
+        // Actualiza la vista
+        actualizarVista();
     });
 }
