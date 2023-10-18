@@ -1,5 +1,21 @@
 var ListaSemestres = [];
 
+function inicializarListaSemestres() {
+    if (localStorage.getItem('ListaSemestres')) {
+        // Si existe en localStorage, cárgala en la variable
+        ListaSemestres = JSON.parse(localStorage.getItem('ListaSemestres'));
+    } else {
+        // Si no existe en localStorage, crea una variable vacía o realiza otra acción apropiada
+        ListaSemestres = [];
+    }
+}
+
+// Llama a la función cuando el documento esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    inicializarListaSemestres();
+    actualizarVista();  
+});
+
 document.getElementById("nuevoSemestreForm").addEventListener("submit", function (event) {
     event.preventDefault(); // Evita que el formulario se envíe normalmente
   
@@ -51,8 +67,8 @@ function actualizarVista() {
         });
         // Agrega un evento al botón para ver el detalle del elemento
         document.getElementById(`detalleBtn${index}`).addEventListener('click', function () {
-            var url = "../html/detalle.html?index=" + index + "&ListaSemestres=" + JSON.stringify(ListaSemestres);
-            // Redirige a la página con la URL construida
+            localStorage.setItem('ListaSemestres', JSON.stringify(ListaSemestres));
+            var url = "../html/detalle.html?index=" + index;
             window.location.href = url;
         });
     });
