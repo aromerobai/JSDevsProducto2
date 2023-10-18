@@ -1,4 +1,4 @@
-var miLista = [];
+var ListaSemestres = [];
 
 document.getElementById("nuevoSemestreForm").addEventListener("submit", function (event) {
     event.preventDefault(); // Evita que el formulario se envíe normalmente
@@ -10,7 +10,7 @@ document.getElementById("nuevoSemestreForm").addEventListener("submit", function
     // Crea un objeto con los datos del formulario
     var semestre = { nombre: nombre, descripcion: descripcion };
  
-    miLista.push(semestre);
+    ListaSemestres.push(semestre);
   
     // Limpia el formulario
     document.getElementById("nuevoSemestreForm").reset();
@@ -27,7 +27,7 @@ function actualizarVista() {
     contenedorHTML.innerHTML = '';
 
     // Recorre el vector y genera HTML para cada objeto
-    miLista.forEach(function (objeto, index) {
+    ListaSemestres.forEach(function (objeto, index) {
         // Genera elementos HTML
         var div = document.createElement("div");
         div.className = "col-sm-6 col-md-4 col-lg-4 my-3"; // Asigna las clases Bootstrap
@@ -51,7 +51,9 @@ function actualizarVista() {
         });
         // Agrega un evento al botón para ver el detalle del elemento
         document.getElementById(`detalleBtn${index}`).addEventListener('click', function () {
-            console.log("Detalle boton: " + index);
+            var url = "../html/detalle.html?index=" + index + "&ListaSemestres=" + JSON.stringify(ListaSemestres);
+            // Redirige a la página con la URL construida
+            window.location.href = url;
         });
     });
 }
@@ -80,7 +82,7 @@ function eliminarElemento(index) {
     document.getElementById("btnAceptar").addEventListener("click", function () {
         document.body.removeChild(alertDiv); // Cierra la alerta
         // Elimina el elemento correspondiente de miLista
-        miLista.splice(index, 1);
+        ListaSemestres.splice(index, 1);
         // Actualiza la vista
         actualizarVista();
     });
