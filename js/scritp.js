@@ -5,7 +5,7 @@ function inicializarListaSemestres() {
         // Si existe en localStorage, cárgala en la variable
         ListaSemestres = JSON.parse(localStorage.getItem('ListaSemestres'));
     } else {
-        // Si no existe en localStorage, crea una variable vacía o realiza otra acción apropiada
+        // Si no existe en localStorage
         ListaSemestres = [];
     }
 }
