@@ -67,10 +67,10 @@ function actualizarVista() {
         });
         // Agrega un evento al botón para ver el detalle del elemento
         document.getElementById(`detalleBtn${index}`).addEventListener('click', function () {
-            localStorage.setItem('ListaSemestres', JSON.stringify(ListaSemestres));
             var url = "../html/detalle.html?index=" + index;
             window.location.href = url;
         });
+        localStorage.setItem('ListaSemestres', JSON.stringify(ListaSemestres));
     });
 }
 

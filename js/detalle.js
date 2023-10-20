@@ -20,7 +20,7 @@ function obtenerParametrosDeURL() {
     }
 
     index = parametros.index;
-    var ListaSemestres = JSON.parse(localStorage.getItem('ListaSemestres'));
+    ListaSemestres = JSON.parse(localStorage.getItem('ListaSemestres'));
 
-    console.log("miLista: ", ListaSemestres[index]);
+    console.log("Semestre: ", ListaSemestres[index]);
 }
