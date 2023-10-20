@@ -21,6 +21,21 @@ function obtenerParametrosDeURL() {
 
     index = parametros.index;
     ListaSemestres = JSON.parse(localStorage.getItem('ListaSemestres'));
-
-    console.log("Semestre: ", ListaSemestres[index]);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var contenedorHTML = document.getElementById("encabezado");
+    var div = document.createElement("div");
+    div.innerHTML = `
+        <div class="container vertical-center">
+            <div class="text-center">
+                <h1>${ListaSemestres[index].nombre}</h1>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Detalles del Semestre</button>
+            </div>
+        </div>
+    `;
+    contenedorHTML.appendChild(div);
+
+    var descripcionLabel = document.getElementById("descripcionLabel");
+    descripcionLabel.textContent = ListaSemestres[index].descripcion;
+});

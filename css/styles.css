@@ -1,0 +1,10 @@
+h1, h2 {
+    margin-bottom: 0.5rem; /* Puedes ajustar el valor según tus necesidades */
+}
+
+.vertical-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
