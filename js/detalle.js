@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="text-center">
                 <h1>${ListaSemestres[index].nombre}</h1>
                 <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Detalles del Semestre</button>
+                <button type="button" class="btn btn-primary" onclick="modalAddCard()" data-bs-toggle="modal" data-bs-target="#AddUpdCard">Añadir Asignatura</button>
             </div>
         </div>
     `;
@@ -38,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var descripcionLabel = document.getElementById("descripcionLabel");
     descripcionLabel.textContent = ListaSemestres[index].descripcion;
+
+    inicializarCards("prueba","prueba descripcion","aprobada-pannel"); //------------------------------------------------
 });
 
 function allowDrop(ev) {
