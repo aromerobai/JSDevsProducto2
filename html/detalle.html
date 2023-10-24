@@ -6,6 +6,9 @@
     <title>Semestres</title>
     <link rel="stylesheet" href="../css/styles.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../js/detalle.js"></script>   
     <script>
         var parametrosURL = obtenerParametrosDeURL();
@@ -44,11 +47,83 @@
         </div>
     </div>
 </div>
-
-    <div class="encabezado" id="encabezado">
-        <!--Encabezado añadido desde javascript-->
+<div class="encabezado" id="encabezado">
+    <!--Encabezado añadido desde javascript-->
+</div>
+<body>
+    <div class="container">          
+        <div class="row justify-content-between">
+          <div id="todo-pannel" class="col overflow-auto pannel" ondrop="drop(event)" ondragover="allowDrop(event)">  
+            <div class="col-title">
+              <h2>Empezada
+                <button type="button" class="btn btn-primary btn-circle btn-xl" onclick="modalAddCard()" data-bs-toggle="modal" data-bs-target="#AddUpdCard">+</button>
+              </h2>                    
+            </div>                
+            <!-- Tarjetas -->                                           
+          </div>              
+          <!-- Panel En progreso -->
+          <div id="progress-pannel" class="col overflow-auto pannel" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="col-title">
+              <h2>Aprobada</h2>                                                  
+            </div>                              
+          </div>              
+          <!-- Panel Finalizado -->
+          <div id="finalized-pannel" class="col overflow-auto pannel" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="col-title">
+              <h2>Suspendida</h2>
+            </div>                
+          </div>              
+        </div>                                   
+      </div>                  
     </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Modal Agregar/Modificar tarjeta -->
+    <div id="AddUpdCard" class="modal fade" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 id="modalTitle" class="modal-title fs-5"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="title">Nombre de la asignatura</label>
+                <input id="title" type="text" class="form-control" placeholder="Título de tarjeta">                  
+              </div>
+              <div class="form-group">
+                <label for="description">Descripción de la asignatura</label>
+                <input id="description" type="text" class="form-control" placeholder="Descripcion">
+              </div>
+              <div class="form-group">
+                <label for="deadline">Fecha límite</label>
+                <input id="deadline" type="date" class="form-control">
+              </div>
+              <br>
+              <button id="add-card" type="button" class="btn btn-primary" data-bs-dismiss="modal">Agregar</button>
+              <button id="update-card" type="button" class="btn btn-primary" data-bs-dismiss="modal">Modificar</button>
+            </form>
+          </div>            
+        </div>
+      </div>
+    </div>
+    <div id="DeleteCard" class="modal fade" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5">Eliminar asignautra</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>  
+              <div class="modal-body">
+                <p>¿Desea eliminar la asignatura?</p>
+              </div>   
+              <div class="modal-footer">
+                <button id="DeleteBtn" type="button" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              </div>  
+          </div>         
+      </div>      
+    </div>      
+  </body>  
+<script src="../js/asignaturas.js"></script>
 </body>
 </html>

@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="container vertical-center">
             <div class="text-center">
                 <h1>${ListaSemestres[index].nombre}</h1>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Detalles del Semestre</button>
+                <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Detalles del Semestre</button>
             </div>
         </div>
     `;
@@ -39,3 +39,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var descripcionLabel = document.getElementById("descripcionLabel");
     descripcionLabel.textContent = ListaSemestres[index].descripcion;
 });
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
