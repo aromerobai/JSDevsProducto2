@@ -37,10 +37,15 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     contenedorHTML.appendChild(div);
 
+
     var descripcionLabel = document.getElementById("descripcionLabel");
     descripcionLabel.textContent = ListaSemestres[index].descripcion;
-
-    inicializarCards("prueba","prueba descripcion","aprobada-pannel"); //------------------------------------------------
+    
+    /*if(ListaSemestres[index].asignaturas.length != 0){
+        ListaSemestres[index].asignaturas.forEach(function (asignatura, index) {
+            inicializarCards(asignatura.nombre,asignatura.descripcion,asignatura.pannel);
+        });
+    }*/
 });
 
 function allowDrop(ev) {

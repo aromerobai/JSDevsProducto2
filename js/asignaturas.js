@@ -27,6 +27,7 @@ function createCard(){
     
     /*Title*/
     const title_val = document.getElementById("title").value;
+    var nom = document.getElementById("title").value;
     const title_txt = document.createTextNode(title_val);
     const h5 = document.createElement("h5");    
     h5.classList.add("card-title");
@@ -34,6 +35,7 @@ function createCard(){
 
     /*Description*/
     const desc_val = document.getElementById("description").value;
+    var desc = document.getElementById("description").value;
     const desc_txt = document.createTextNode(desc_val);
     const p_desc = document.createElement("p");    
     p_desc.classList.add("card-text");
@@ -79,6 +81,11 @@ function createCard(){
     console.log(card_div);
     clearLabels();
     i += 1;   
+
+    /*pannelAñadido = "asignaturas-pannel";
+    var asignatura = {nombre: nom, descripcion: desc,pannel: pannelAñadido}
+    ListaSemestres[index].asignaturas.push(asignatura);
+    localStorage.setItem('ListaSemestres', JSON.stringify(ListaSemestres));*/
 }
 
 
@@ -142,12 +149,10 @@ function getTextContent(element){
 function deleteCard(element){
     document.getElementById("DeleteBtn").addEventListener("click", function() { element.closest(".card").remove()});        
 }
-
+/*
 function inicializarCards(titulo,descripcion,panel){ 
-
     const pannelVariable = document.getElementById(panel);
 
-    /*Divs*/
     const card_div = document.createElement("div");    
     var res = id_div.concat(String(i));
     card_div.setAttribute("id", res);
@@ -164,14 +169,13 @@ function inicializarCards(titulo,descripcion,panel){
     const card_body = document.createElement("div");
     card_body.classList.add("card-body");    
     
-    /*Title*/
+
     const title_val = titulo;
     const title_txt = document.createTextNode(title_val);
     const h5 = document.createElement("h5");    
     h5.classList.add("card-title");
     h5.appendChild(title_txt);
 
-    /*Description*/
     const desc_val = descripcion;
     const desc_txt = document.createTextNode(desc_val);
     const p_desc = document.createElement("p");    
@@ -181,7 +185,7 @@ function inicializarCards(titulo,descripcion,panel){
     const br = document.createElement("br");
     p_desc.appendChild(br);
     
-    /*Update Button*/
+
     const upd_button = document.createElement("btn");
     upd_button.setAttribute("id", "btn"+String(i));
     upd_button.setAttribute("type", "button");
@@ -193,7 +197,6 @@ function inicializarCards(titulo,descripcion,panel){
     const upd_button_txt = document.createTextNode("Modificar");
     upd_button.appendChild(upd_button_txt);
 
-    /*Delete Button*/
     const del_button = document.createElement("btn");   
     del_button.setAttribute("type", "button"); 
     del_button.classList.add("btn");
@@ -218,4 +221,4 @@ function inicializarCards(titulo,descripcion,panel){
     console.log(card_div);
     clearLabels();
     i += 1;   
-}
+}*/
