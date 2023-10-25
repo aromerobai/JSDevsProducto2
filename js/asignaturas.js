@@ -50,6 +50,7 @@ function createCard(){
     upd_button.setAttribute("type", "button");
     upd_button.classList.add("btn");
     upd_button.classList.add("btn-primary");
+    upd_button.classList.add("btn-sm");
     upd_button.setAttribute("data-bs-toggle", "modal");
     upd_button.setAttribute("data-bs-target", "#AddUpdCard");
     upd_button.setAttribute("onclick", "modalUpdateCard(this)");
@@ -61,6 +62,7 @@ function createCard(){
     del_button.setAttribute("type", "button"); 
     del_button.classList.add("btn");
     del_button.classList.add("btn-danger");
+    del_button.classList.add("btn-sm");
     del_button.classList.add("btn-delete");
     del_button.setAttribute("data-bs-toggle", "modal");
     del_button.setAttribute("data-bs-target", "#DeleteCard");
@@ -82,8 +84,8 @@ function createCard(){
     clearLabels();
     i += 1;   
 
-    /*pannelAñadido = "asignaturas-pannel";
-    var asignatura = {nombre: nom, descripcion: desc,pannel: pannelAñadido}
+    /*pannelAdd = "asignaturas-pannel";
+    var asignatura = {nombre: nom, descripcion: desc,pannel: pannelAdd}
     ListaSemestres[index].asignaturas.push(asignatura);
     localStorage.setItem('ListaSemestres', JSON.stringify(ListaSemestres));*/
 }
