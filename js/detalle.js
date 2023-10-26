@@ -40,6 +40,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var descripcionLabel = document.getElementById("descripcionLabel");
     descripcionLabel.textContent = ListaSemestres[index].descripcion;
+    var descripcionLabel = document.getElementById("anno");
+    descripcionLabel.textContent = ListaSemestres[index].anno;
+    var descripcionLabel = document.getElementById("inicio");
+    descripcionLabel.textContent = ListaSemestres[index].inicio;
+    var descripcionLabel = document.getElementById("final");
+    descripcionLabel.textContent = ListaSemestres[index].final; 
     
     /*if(ListaSemestres[index].asignaturas.length != 0){
         ListaSemestres[index].asignaturas.forEach(function (asignatura, index) {

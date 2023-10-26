@@ -22,9 +22,12 @@ document.getElementById("nuevoSemestreForm").addEventListener("submit", function
     // Obtiene los valores ingresados por el usuario
     var nombre = document.getElementById("nombre").value;
     var descripcion = document.getElementById("descripcion").value;
+    var anno = document.getElementById("anno").value;
+    var inicio = document.getElementById("inicio").value;
+    var final = document.getElementById("final").value;
     //var asignaturas=[];
     
-    var semestre = { nombre: nombre, descripcion: descripcion };
+    var semestre = { nombre: nombre, descripcion: descripcion, anno: anno, inicio: inicio, final: final };
     ListaSemestres.push(semestre);
   
     // Limpia el formulario

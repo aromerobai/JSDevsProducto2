@@ -80,7 +80,7 @@ function createCard(){
     card_div.appendChild(row_div);
     
     pannel.appendChild(card_div); 
-    console.log(card_div);
+
     clearLabels();
     i += 1;   
 
