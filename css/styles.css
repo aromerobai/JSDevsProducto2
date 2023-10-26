@@ -55,15 +55,6 @@ h1, h2 {
     margin: 0 auto;
 }
 
-.btn-circle.btn-xl {
-    width: 30px;
-    height: 30px;
-    padding: 2px 2px;
-    border-radius: 30px;
-    font-size: 15px;
-    text-align: center;
-    float: right;
-}
 
 .btn-delete {
     margin-bottom: 15px;
