@@ -25,9 +25,10 @@ document.getElementById("nuevoSemestreForm").addEventListener("submit", function
     var anno = document.getElementById("anno").value;
     var inicio = document.getElementById("inicio").value;
     var final = document.getElementById("final").value;
+    var color = document.getElementById("color").value;
     //var asignaturas=[];
     
-    var semestre = { nombre: nombre, descripcion: descripcion, anno: anno, inicio: inicio, final: final };
+    var semestre = { nombre: nombre, descripcion: descripcion, anno: anno, inicio: inicio, final: final, color: color };
     ListaSemestres.push(semestre);
   
     // Limpia el formulario
@@ -51,7 +52,7 @@ function actualizarVista() {
         div.className = "col-sm-6 col-md-4 col-lg-4 my-3"; // Asigna las clases Bootstrap
         div.innerHTML = `
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="background-color:${objeto.color};">
                     <h5 class="card-title">${objeto.nombre}</h5>
                     <p class="card-text">${objeto.descripcion}</p>
                     <div class="d-flex justify-content-end">
