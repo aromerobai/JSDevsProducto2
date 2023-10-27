@@ -96,7 +96,14 @@
                 <label for="description">Descripción de la asignatura</label>
                 <input id="description" type="text" class="form-control" placeholder="Descripcion">
               </div>
-              <br>
+              <div class="form-group my-3">
+                <label for="difficulty" >Dificultad</label>
+                <select id="difficulty" class="form-control">
+                    <option value="facil" >Fácil</option>
+                    <option value="intermedio">Intermedio</option>
+                    <option value="dificil">Difícil</option>
+                </select>
+            </div>
               <button id="add-card" type="button" class="btn btn-primary" data-bs-dismiss="modal">Agregar</button>
               <button id="update-card" type="button" class="btn btn-primary" data-bs-dismiss="modal">Modificar</button>
             </form>

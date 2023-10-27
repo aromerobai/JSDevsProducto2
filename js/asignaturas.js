@@ -43,6 +43,14 @@ function createCard(){
     p_desc.appendChild(desc_txt);
     const br = document.createElement("br");
     p_desc.appendChild(br);
+
+    /* Dificultad */
+    const difficulty_val = document.getElementById("difficulty").value;
+    var difficulty_txt = document.createTextNode("Dificultad: " + difficulty_val);
+    const p_difficulty = document.createElement("p");
+    p_difficulty.classList.add("card-text");
+    p_difficulty.classList.add("card-difficulty");
+    p_difficulty.appendChild(difficulty_txt);
     
     /*Update Button*/
     const upd_button = document.createElement("btn");
@@ -72,6 +80,7 @@ function createCard(){
 
     card_body.appendChild(h5);    
     card_body.appendChild(p_desc);
+    card_body.appendChild(p_difficulty);
     card_body.appendChild(upd_button);
     card_body.appendChild(del_button);
 
@@ -94,6 +103,7 @@ function createCard(){
 function clearLabels(){
     document.getElementById("title").value="";
     document.getElementById("description").value="";
+    document.getElementById("difficulty").value="";
 }
 
 const delete_btns = document.querySelectorAll(".btn-delete");
@@ -111,6 +121,7 @@ function modalUpdateCard(element){
     console.log(card_body);
     const title = card_body.children[0];     
     const description = card_body.children[1];   
+    const difficulty =  card_body.children[2];
 
     /*Change add btn to update btn*/
     add_button.style.display="none";
@@ -119,18 +130,22 @@ function modalUpdateCard(element){
 
     /*Fill the form with the card values*/
     document.getElementById("title").value=getTextContent(title);
-    document.getElementById("description").value=getTextContent(description);           
+    document.getElementById("description").value=getTextContent(description); 
+    document.getElementById("difficulty").value=getTextContent(difficulty);          
 }
 
 function updateCard(element){    
     const card_body = element.parentElement;     
     const title = card_body.children[0];     
     const description = card_body.children[1]; 
+    const difficulty = card_body.children[2]; 
 
     deleteChilds(title);
     deleteChilds(description);
+    deleteChilds(difficulty);
     title.appendChild(document.createTextNode(document.getElementById("title").value));        
-    description.appendChild(document.createTextNode(document.getElementById("description").value));        
+    description.appendChild(document.createTextNode(document.getElementById("description").value));  
+    difficulty.appendChild(document.createTextNode("Dificultad: " + document.getElementById("difficulty").value));      
 }
 
 function changeModalTitle(element, action){
