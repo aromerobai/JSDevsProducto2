@@ -70,7 +70,7 @@ function actualizarVista() {
         });
         // Agrega un evento al botón para ver el detalle del elemento
         document.getElementById(`detalleBtn${index}`).addEventListener('click', function () {
-            var url = "../html/detalle.html?index=" + index;
+            var url = "detalle.html?index=" + index;
             window.location.href = url;
         });
         localStorage.setItem('ListaSemestres', JSON.stringify(ListaSemestres));
